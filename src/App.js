@@ -19,7 +19,7 @@ function App() {
       <button className={'btn btn-success'} onClick={() => setCount(prev => prev + 1)}>Добавить</button>
       <button className={'btn btn-warning'} onClick={() => setColored(prev => !prev)}>Изменить</button>
 
-      <ItemsList />
+      <ItemsList getItems={generateIttemsFromAPI} />
     </>
   )
 }
