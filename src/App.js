@@ -1,17 +1,16 @@
 import React from 'react';
 import Main from './Main'
-import Alert from './alert/Alert'
-
-export const AlertContext = React.createContext();
+import Alert from './alert/Alert';
+import {AlertProvider} from './alert/AlertContext';
 
 function App() {
   return (
-    <AlertContext>
+    <AlertProvider>
       <div className={'container pt-3'}>
         <Alert />
         <Main toggle={() => {}} />
       </div>
-    </AlertContext>
+    </AlertProvider>
   )
 }
 

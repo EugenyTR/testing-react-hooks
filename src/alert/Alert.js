@@ -1,16 +1,16 @@
 import React from 'react';
-import { useAlert } from './AlertContext'
+import { useAlert } from './AlertContext';
 
 export default function Alert() {
 
     const alert = useAlert();
 
-    if (!alert) {
+    if (!alert.visible) {
         return null 
     }
 
     return (
-        <div className={'alert alert-danger'}>
+        <div className={'alert alert-danger'} onClick={alert.toggle}>
             Это очень важное сообщение!
         </div>
     )
