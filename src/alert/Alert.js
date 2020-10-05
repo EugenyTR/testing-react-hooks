@@ -1,9 +1,9 @@
-import React, {useContext} from 'react';
-import { AlertContext } from './App';
+import React from 'react';
+import { useAlert } from './AlertContext'
 
 export default function Alert() {
 
-    const alert = useContext(AlertContext);
+    const alert = useAlert();
 
     if (!alert) {
         return null 
