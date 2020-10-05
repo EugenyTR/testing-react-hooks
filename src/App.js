@@ -1,26 +1,21 @@
-import React, {useState} from 'react';
-import ItemsList from './itemsList';
+import React from 'react';
+import Main from './Main'
+import Alert from './Alert'
+
+export const AlertContext = React.createContext();
 
 function App() {
-  const [colored, setColored] = useState(false);
-  const [count, setCount] = useState(1);
+  const [alert, setAlert] = useState(false);
 
-  const styles = {
-    color: colored ? 'darken' : 'black'
-  }
-
-  const generateIttemsFromAPI = () => {
-    return new Array(count).fill('').map((_, i) => `Элемент ${i + 1}`)
-  }
+  const toggleAlert = () => setAlert(prev => !prev);
 
   return (
-    <>
-      <h1 style={styles}>Количество элементов: {count}</h1>
-      <button className={'btn btn-success'} onClick={() => setCount(prev => prev + 1)}>Добавить</button>
-      <button className={'btn btn-warning'} onClick={() => setColored(prev => !prev)}>Изменить</button>
-
-      <ItemsList getItems={generateIttemsFromAPI} />
-    </>
+    <AlertContext.Provider value={alert}>
+      <div className={'container pt-3'}>
+        <Alert />
+        <Main toggle={toggleAlert} />
+      </div>
+    </AlertContext.Provider>
   )
 }
 
